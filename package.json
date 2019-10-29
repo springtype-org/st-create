@@ -1,6 +1,6 @@
 {
     "name": "st-create",
-    "version": "2.0.0-alpha.3",
+    "version": "2.0.0-alpha.4",
     "publishConfig": {
         "access": "public"
     },
@@ -17,7 +17,7 @@
         "url": "git+https://github.com/springtype-org/springtype.git"
     },
     "scripts": {
-        "build": "st-run st-rm-rf dist ++ system:tsc ++ st-cp package.json dist ++ st-cp node_modules dist ++ st-cp template dist"
+        "build": "st-run st-rm-rf dist ++ system:tsc ++ st-cp package.json node_modules template README.md dist"
     },
     "engines": {
         "node": ">=10"
