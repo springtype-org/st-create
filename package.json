@@ -32,7 +32,7 @@
         "validate-npm-package-name"
     ],
     "bin": {
-        "springtype": "./cli.js"
+        "st-create": "./cli.js"
     },
     "main": "cli.js",
     "author": "Aron Homberg <info@aron-homberg.de>, Michael Mannseicher <m.mansi1@gmx.net>",
