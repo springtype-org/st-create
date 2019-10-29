@@ -1,6 +1,6 @@
 {
     "name": "st-create",
-    "version": "2.0.0-alpha.1",
+    "version": "2.0.0-alpha.3",
     "publishConfig": {
         "access": "public"
     },
@@ -11,13 +11,13 @@
         "code generator",
         "create"
     ],
-    "description": "CLI to scaffold SpringType projects and components.",
+    "description": "Generates SpringType projects and components for you.",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/springtype-org/springtype.git"
     },
     "scripts": {
-        "build": "st-run st-rm-rf dist + system:tsc + st-cp package.json dist + st-cp node_modules dist + st-cp template dist"
+        "build": "st-run st-rm-rf dist ++ system:tsc ++ st-cp package.json dist ++ st-cp node_modules dist ++ st-cp template dist"
     },
     "engines": {
         "node": ">=10"
@@ -52,7 +52,7 @@
     },
     "devDependencies": {
         "@types/node": "^12.11.7",
-        "st-run": "^2.0.0-alpha.6",
+        "st-run": "^2.0.0-alpha.9",
         "typescript": "^3.6.4"
     }
 }
