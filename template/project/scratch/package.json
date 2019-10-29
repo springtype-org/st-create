@@ -1,0 +1,20 @@
+{
+  "name": "templatename-scratch",
+  "version": "1.0.0",
+  "description": "TemplateName: Based on the SpringType scratch scaffolding project",
+  "scripts": {
+    "clean": "st-run st-rm-rf dist",
+    "start:prod": "cross-env NODE_ENV=production st-start",
+    "start": "cross-env NODE_ENV=development st-start"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "springtype": "2.0.0-alpha.1.16"
+  },
+  "devDependencies": {
+    "cross-env": "^6.0.3",
+    "typescript": "^3.6.4",
+    "st-start": "^2.0.0-alpha.21",
+    "st-run": "2.0.0-alpha.6"
+  }
+}

@@ -1,0 +1,58 @@
+{
+    "name": "st-create",
+    "version": "2.0.0-alpha.1",
+    "publishConfig": {
+        "access": "public"
+    },
+    "keywords": [
+        "springtype",
+        "scaffold",
+        "generator",
+        "code generator",
+        "create"
+    ],
+    "description": "CLI to scaffold SpringType projects and components.",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/springtype-org/springtype.git"
+    },
+    "scripts": {
+        "build": "st-run st-rm-rf dist + system:tsc + st-cp package.json dist + st-cp node_modules dist + st-cp template dist"
+    },
+    "engines": {
+        "node": ">=10"
+    },
+    "bundledDependencies": [
+        "envinfo",
+        "chalk",
+        "st-rm-rf",
+        "inquirer",
+        "commander",
+        "cross-spawn",
+        "validate-npm-package-name"
+    ],
+    "bin": {
+        "springtype": "./cli.js"
+    },
+    "main": "cli.js",
+    "author": "Aron Homberg <info@aron-homberg.de>, Michael Mannseicher <m.mansi1@gmx.net>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/springtype-org/springtype/issues"
+    },
+    "homepage": "https://www.springtype.org",
+    "dependencies": {
+        "chalk": "^2.4.2",
+        "commander": "^3.0.2",
+        "cross-spawn": "^7.0.1",
+        "envinfo": "^7.4.0",
+        "inquirer": "^7.0.0",
+        "st-rm-rf": "^1.0.0-alpha.1.42",
+        "validate-npm-package-name": "^3.0.0"
+    },
+    "devDependencies": {
+        "@types/node": "^12.11.7",
+        "st-run": "^2.0.0-alpha.6",
+        "typescript": "^3.6.4"
+    }
+}

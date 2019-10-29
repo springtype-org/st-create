@@ -1,0 +1,37 @@
+{
+  "name": "templatename-from-todo",
+  "private": true,
+  "version": "1.0.0-alpha.1.13",
+  "description": "templatename is a SpringType project based on template: todo.",
+  "dependencies": {
+    "@springtype/core": "^1.0.0-alpha.1.37",
+    "@springtype/i18n": "^1.0.0-alpha.1.37",
+    "@springtype/router": "^1.0.0-alpha.1.37",
+    "@springtype/state": "^1.0.0-alpha.1.37",
+    "@springtype/test": "^1.0.0-alpha.1.37",
+    "@types/node": "^11.10.5",
+    "cross-env": "^5.2.0",
+    "date-fns": "^1.30.1",
+    "materialize-css": "^1.0.0",
+    "tslib": "^1.9.3"
+  },
+  "scripts": {
+    "test": "mocha -r ts-node/register test/**/*.test.ts",
+    "e2e": "testcafe chrome e2e",
+    "clean": "npx st-rm-rf dist",
+    "start": "npx parcel src/index.html",
+    "serve": "npx parcel serve src/index.html",
+    "build": "npm run clean && cross-env NODE_ENV=production parcel build src/index.html --public-url ."
+  },
+  "devDependencies": {
+    "mocha": "^6.0.2",
+    "parcel": "^1.12.3",
+    "sass": "^1.17.3",
+    "testcafe": "latest",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.4.1"
+  },
+  "browserslist": [
+    "last 1 Chrome version"
+  ]
+}
