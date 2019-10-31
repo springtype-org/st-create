@@ -4,10 +4,11 @@ import chalk from "chalk";
 import * as commander from "commander";
 import envinfo from "envinfo";
 import { readFileSync } from "fs";
+import { resolve } from "path";
 import registerCreateCommand from "./command/create/function/register-create-command";
 import { printHeader } from "./function/print-header";
 
-const packageJson = JSON.parse(readFileSync("package.json", "utf8"));
+const packageJson = JSON.parse(readFileSync(resolve(__dirname, "package.json"), "utf8"));
 
 // always print the header first
 printHeader();
