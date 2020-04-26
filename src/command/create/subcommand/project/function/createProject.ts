@@ -1,4 +1,4 @@
-import chalk from "chalk";
+const chalk = require("chalk");
 import { existsSync, readFileSync } from "fs";
 import * as inquirer from "inquirer";
 import { join, resolve, sep } from "path";
@@ -11,7 +11,7 @@ import { createProjectFolder } from "./create-project-folder";
 import { printFooter } from "./print-footer";
 import { validateProjectDirectoryInput } from "./validate-project-directory-input";
 
-const DEFAULT_PROJECT_TEMPLATE_TYPE = "scratch";
+const DEFAULT_PROJECT_TEMPLATE_TYPE = "default";
 
 const transformPackageDependenciesToStrings = (packageJson: any, key: string): Array<string> => {
   const dependencies: Array<string> = [];

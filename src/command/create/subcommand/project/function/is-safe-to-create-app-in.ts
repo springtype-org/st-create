@@ -1,7 +1,7 @@
-import chalk from "chalk";
+const chalk = require("chalk");
 import { readdirSync } from "fs";
 import { join } from "path";
-import { removePathOrFile } from "st-rm-rf";
+import { deletePathOrFile } from "st-rm-rf";
 import { filesAllowedToResistInAppDir } from "../definition/files-allowed-to-resist-in-app-dir";
 import { logFiles } from "../definition/logFiles";
 
@@ -31,7 +31,7 @@ export const isSafeToCreateAppIn = async (rootPath: string, name: string) => {
   for (let i = 0; i < currentFiles.length; i++) {
     const file = currentFiles[i];
     if (logFiles.find((errorLogFilePattern: string) => file.indexOf(errorLogFilePattern) === 0)) {
-      await removePathOrFile(join(rootPath, file));
+      await deletePathOrFile(join(rootPath, file));
     }
   }
   return true;

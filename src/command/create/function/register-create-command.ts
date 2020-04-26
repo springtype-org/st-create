@@ -8,18 +8,20 @@ const inquirer = require("inquirer");
 
 export default function registerCreateCommand(program: Command) {
   program
-    .command("create [category] [template] [desiredName]")
+    .command("create [category] [template] [name]")
     .alias("c")
     .option("-c, --category <category>", "component | project")
-    .option("-t, --template <template>", "scratch | ionic-app | ... | ./my/templates/foo")
-    .option("-n, --name <desiredName>", "my-component")
+    .option("-t, --template <template>", "default | ionic-app | ... | ./my/templates/foo")
+    .option("-n, --name <name>", "my-component")
     .description("Generates components and projects from templates")
-    .action(async (category: string, template: string, desiredName: string) => {
+    .action(async (category: string, template: string, name: string) => {
       const opts = program.opts();
 
       category = opts.category || category;
       template = opts.template || template;
-      desiredName = opts.desiredName || desiredName;
+      name = opts.name || name;
+
+      if (typeof name !== "string") name = undefined;
 
       const categories = enumToArray(Category);
 
@@ -36,7 +38,7 @@ export default function registerCreateCommand(program: Command) {
             name: "category",
             default: "component",
             message: "Please select a category",
-            filter: function(val: string) {
+            filter: function (val: string) {
               return val.toLowerCase();
             },
           },
@@ -47,11 +49,14 @@ export default function registerCreateCommand(program: Command) {
       const projectPath = process.cwd();
 
       switch (category) {
+        case Category.SERVICE:
+          await createComponent(projectPath, template, name, 'service');
+          break;
         case Category.COMPONENT:
-          await createComponent(projectPath, template, desiredName);
+          await createComponent(projectPath, template, name, 'component');
           break;
         case Category.PROJECT:
-          await createProject(projectPath, template, desiredName);
+          await createProject(projectPath, template, name);
           break;
       }
     });

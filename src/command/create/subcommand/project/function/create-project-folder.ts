@@ -1,4 +1,4 @@
-import chalk from "chalk";
+const chalk = require("chalk");
 import { mkdirSync } from "fs";
 import { isSafeToCreateAppIn } from "./is-safe-to-create-app-in";
 

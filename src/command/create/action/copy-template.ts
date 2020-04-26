@@ -1,9 +1,10 @@
 import { readdirSync, statSync } from "fs";
 import { sep } from "path";
 import { copyAndConcreteFile } from "../../../function/copy-and-concrete-file";
+
 export const copyTemplate = (projectPath: string, templateFolderPath: string, concreteName: string): boolean => {
   console.log();
-  console.log("creating files:");
+  console.log("Creating files:");
   getFiles(templateFolderPath, (filePath: string) =>
     copyAndConcreteFile({
       filePath,
@@ -12,7 +13,6 @@ export const copyTemplate = (projectPath: string, templateFolderPath: string, co
       concreteName,
     }),
   );
-
   return true;
 };
 

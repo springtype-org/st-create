@@ -49,8 +49,8 @@ You can just name a template folder to create a new project/component from:
 
 We're keen to improve this implementation until we feel really comfortable with it. Right now this lacks:
 
-- [ ] e2e tests
-- [ ] Unit tests
+- [ ] Project template for guide
+- [ ] Project template for st-materialize
 - [ ] The ability to directly fetch templates from GitHub repository URL's
 
 <h2 align="center">Maintainers</h2>

@@ -1,4 +1,4 @@
-import chalk from "chalk";
+const chalk = require("chalk");
 import { readFileSync } from "fs";
 import * as inquirer from "inquirer";
 import { join, resolve, sep } from "path";
@@ -6,12 +6,12 @@ import { donationUrl } from "../../../../../definition/donation-url";
 import { getTemplatesFromFolder } from "../../../../../function/get-templates";
 import { copyTemplate } from "../../../action/copy-template";
 import { printFooter } from "./print-footer";
-import { validateComponentName } from "./validate-component-name";
+import { validateClassName } from "./validate-class-name";
 
-const DEFAULT_COMPONENT_TEMPLATE_TYPE = "scratch";
+const DEFAULT_COMPONENT_TEMPLATE_TYPE = "default";
 
-export async function createComponent(cwd: string, template: string, componentName: string) {
-  const templateFolderPath = resolve(__dirname, "../../../../../template/component");
+export async function createComponent(cwd: string, template: string, className: string, subPath: string) {
+  const templateFolderPath = resolve(__dirname, "../../../../../template/" + subPath);
   const templates = getTemplatesFromFolder(templateFolderPath);
 
   if (template && template.indexOf(sep) === -1 && templates.indexOf(template.toLowerCase()) === -1) {
@@ -38,20 +38,19 @@ export async function createComponent(cwd: string, template: string, componentNa
   // support for custom template paths
   const selectedTemplateFolderPath = template.indexOf(sep) === -1 ? join(templateFolderPath, template) : template;
 
-  if (!componentName) {
-    // get Web Component tag name
-    const choiceComponentTagName = await inquirer.prompt([
+  if (!className) {
+    const choiceComponentClassName = await inquirer.prompt([
       {
         type: "input",
-        name: "componentName",
-        message: `Please specify the component tag name (e.g. ${chalk.cyan("MySideMenu")}):`,
-        validate: validateComponentName,
+        name: "className",
+        message: `Please specify the class name (e.g. ${chalk.cyan("MyClass")}):`,
+        validate: validateClassName,
       },
     ]);
-    componentName = choiceComponentTagName.componentName;
+    className = choiceComponentClassName.className;
   }
 
-  if (!copyTemplate(cwd, selectedTemplateFolderPath, componentName)) {
+  if (!copyTemplate(cwd, selectedTemplateFolderPath, className)) {
     return false;
   }
 

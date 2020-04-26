@@ -1,6 +1,6 @@
 import { basename, resolve, sep } from "path";
 import { concatErrors } from "../../../../../function/concat-errors";
-import { validateComponentName } from "../../component/function/validate-component-name";
+import { validateClassName } from "../../component/function/validate-class-name";
 
 const validateProjectName = require("validate-npm-package-name");
 const chalk = require("chalk");
@@ -17,7 +17,7 @@ export const validateProjectDirectoryInput = async (projectDirectory: string): P
   const root = resolve(projectDirectory);
   let appName = basename(root);
   const validationResult = validateProjectName(appName.toLowerCase());
-  const componentValidationResult = validateComponentName(appName);
+  const componentValidationResult = validateClassName(appName);
 
   if (appName.indexOf(".") > -1) {
     validationResult.validForNewPackages = false;

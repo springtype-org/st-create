@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import chalk from "chalk";
-import * as commander from "commander";
+const chalk = require("chalk");
+const { createCommand } = require('commander');
 import envinfo from "envinfo";
 import { readFileSync } from "fs";
 import { resolve } from "path";
@@ -18,10 +18,10 @@ if (process.argv.length === 2) {
   process.argv[2] = "create";
 }
 
-const program = new commander.Command(packageJson.name)
+const program = createCommand(packageJson.name)
   .version(packageJson.version)
-  .option("-c, --category <category>", "component | project")
-  .option("-t, --template <template>", "scratch | ionic-app | ... | ./my/templates/foo")
+  .option("-c, --category <category>", "service | component | project")
+  .option("-t, --template <template>", "default | guide | ... | ./my/templates/foo")
   .option("-n, --name <name>", "my-component")
   .option("--info", "print environment debug info")
   .allowUnknownOption()
@@ -33,6 +33,7 @@ const program = new commander.Command(packageJson.name)
   });
 
 (async () => {
+
   await registerCreateCommand(program);
 
   program.parse(process.argv);

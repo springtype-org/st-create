@@ -1,8 +1,9 @@
-import chalk from "chalk";
+const chalk = require('chalk');
 import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { join, relative, resolve } from "path";
 import { isProgramCodeFile } from "./human-readable-files";
 import { kebabToCamelCase } from "./kebab-to-camel-case";
+import { camelToKebabCase } from "./camel-to-kebab-case";
 
 const TEMPLATE_LOWER_REGEX = /templatename/g;
 const TEMPLATE_UPPER_REGEX = /TemplateName/g;
@@ -15,9 +16,13 @@ export interface CopyRenameReplaceFileOptions {
 }
 
 export const copyAndConcreteFile = (options: CopyRenameReplaceFileOptions) => {
-  const fileName = relative(options.templateFolderPath, options.filePath)
-    .replace(TEMPLATE_LOWER_REGEX, options.concreteName.toLocaleLowerCase())
-    .replace(TEMPLATE_UPPER_REGEX, kebabToCamelCase(options.concreteName));
+
+  let fileName = relative(options.templateFolderPath, options.filePath)
+    .replace(TEMPLATE_UPPER_REGEX, options.concreteName)
+    .replace(TEMPLATE_LOWER_REGEX, options.concreteName)
+    .replace(options.concreteName, camelToKebabCase(options.concreteName).toLocaleLowerCase())
+
+  if (fileName[0] === '-') fileName = fileName.substring(1);
 
   const newFilePath = join(options.projectPath, fileName);
   mkdirSync(resolve(newFilePath, ".."), { recursive: true });
