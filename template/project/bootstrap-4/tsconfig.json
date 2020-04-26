@@ -1,0 +1,18 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"declaration": true,
+		"skipLibCheck": true,
+		"target": "es5",
+		"jsx": "react",
+		"outDir": "dist",
+		"jsxFactory": "tsx",
+		"experimentalDecorators": true,
+		"sourceMap": true,
+		"downlevelIteration": true,
+		"resolveJsonModule": true
+	},
+	"exclude": ["node_modules"],
+	"include": ["src"]
+  }
+  
