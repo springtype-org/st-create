@@ -1,0 +1,1 @@
+export const PATH_STYLING_PAGE = 'styling';
