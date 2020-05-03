@@ -9,7 +9,7 @@ const inquirer = require("inquirer");
 export default function registerCreateCommand(program: Command) {
   program
     .description("Generates components and projects from templates")
-    .action(async (category: string, template: string, descriptor: string) => {
+    .action(async (program: any, category: string, template: string, descriptor: string) => {
       const opts = program.opts();
 
       category = opts.category || category;
@@ -20,7 +20,7 @@ export default function registerCreateCommand(program: Command) {
 
       const categories = enumToArray(Category);
 
-      if (category && categories.indexOf(category.toLowerCase()) === -1) {
+      if (typeof category == 'string' && categories.indexOf(category.toLowerCase()) === -1) {
         console.log(`[!!] Error: The category ${category} doesn't exist. Exiting.`);
         process.exit(1);
       }
