@@ -36,20 +36,19 @@ The following command prints all options:
 
 Instead of the interactive CLI questionair, you can also name all agruments and directly generate results:
 
-    st-create -c project -t babylon-3d -n MyNewWebGLGame
+    st-create -c project -t babylon-3d -d MyNewWebGLGame
 
 <h2 align="center">Custom templates</h2>
 
 You can just name a template folder to create a new project/component from:
 
-    st-create -c project -t ../templates/my-blog-template -n AronsBlog
+    st-create -c project -t ../templates/my-blog-template -d AronsBlog
 
 
 <h2 align="center">Short-term Roadmap</h2>
 
 We're keen to improve this implementation until we feel really comfortable with it. Right now this lacks:
 
-- [ ] Project template for guide
 - [ ] Project template for st-materialize
 - [ ] The ability to directly fetch templates from GitHub repository URL's
 

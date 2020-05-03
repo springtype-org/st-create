@@ -13,16 +13,11 @@ const packageJson = JSON.parse(readFileSync(resolve(__dirname, "package.json"), 
 // always print the header first
 printHeader();
 
-if (process.argv.length === 2) {
-  // default action
-  process.argv[2] = "create";
-}
-
 const program = createCommand(packageJson.name)
   .version(packageJson.version)
   .option("-c, --category <category>", "service | component | project")
   .option("-t, --template <template>", "default | guide | ... | ./my/templates/foo")
-  .option("-n, --name <name>", "my-component")
+  .option("-d, --descriptor <descriptor>", "my-component")
   .option("--info", "print environment debug info")
   .allowUnknownOption()
   .on("--help", () => {

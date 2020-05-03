@@ -8,20 +8,15 @@ const inquirer = require("inquirer");
 
 export default function registerCreateCommand(program: Command) {
   program
-    .command("create [category] [template] [name]")
-    .alias("c")
-    .option("-c, --category <category>", "component | project")
-    .option("-t, --template <template>", "default | ionic-app | ... | ./my/templates/foo")
-    .option("-n, --name <name>", "my-component")
     .description("Generates components and projects from templates")
-    .action(async (category: string, template: string, name: string) => {
+    .action(async (category: string, template: string, descriptor: string) => {
       const opts = program.opts();
 
       category = opts.category || category;
       template = opts.template || template;
-      name = opts.name || name;
+      descriptor = opts.descriptor || descriptor;
 
-      if (typeof name !== "string") name = undefined;
+      if (typeof descriptor !== "string") descriptor = undefined;
 
       const categories = enumToArray(Category);
 
@@ -50,13 +45,13 @@ export default function registerCreateCommand(program: Command) {
 
       switch (category) {
         case Category.SERVICE:
-          await createComponent(projectPath, template, name, 'service');
+          await createComponent(projectPath, template, descriptor, 'service');
           break;
         case Category.COMPONENT:
-          await createComponent(projectPath, template, name, 'component');
+          await createComponent(projectPath, template, descriptor, 'component');
           break;
         case Category.PROJECT:
-          await createProject(projectPath, template, name);
+          await createProject(projectPath, template, descriptor);
           break;
       }
     });

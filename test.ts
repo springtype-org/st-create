@@ -3,13 +3,12 @@ import { deletePathOrFile } from "st-rm-rf";
 import { resolve } from "path";
 
 // automating CLI input
-process.argv[2] = "create";
-process.argv[3] = "-c";
-process.argv[4] = "component";
-process.argv[5] = "-t";
-process.argv[6] = "default";
-process.argv[7] = "-n";
-process.argv[8] = "testfixture";
+process.argv[2] = "-c";
+process.argv[3] = "component";
+process.argv[4] = "-t";
+process.argv[5] = "default";
+process.argv[6] = "-d";
+process.argv[7] = "testfixture";
 
 const cwd = process.cwd();
 
