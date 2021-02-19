@@ -1,20 +1,6 @@
-import { readdirSync, statSync } from "fs";
-import { sep } from "path";
-import { copyAndConcreteFile } from "../../../function/copy-and-concrete-file";
-
-export const copyTemplate = (projectPath: string, templateFolderPath: string, concreteName: string): boolean => {
-  console.log();
-  console.log("Creating files:");
-  getFiles(templateFolderPath, (filePath: string) =>
-    copyAndConcreteFile({
-      filePath,
-      templateFolderPath,
-      projectPath,
-      concreteName,
-    }),
-  );
-  return true;
-};
+import { readdirSync, statSync } from 'fs';
+import { sep } from 'path';
+import { copyAndConcreteFile } from '../../../function/copy-and-concrete-file';
 
 const getFiles = (dir: string, fileDiscoveredCb: (filePath: string) => void) => {
   const files = readdirSync(dir);
@@ -26,4 +12,18 @@ const getFiles = (dir: string, fileDiscoveredCb: (filePath: string) => void) => 
       fileDiscoveredCb(path);
     }
   }
+};
+
+export const copyTemplate = (projectPath: string, templateFolderPath: string, concreteName: string): boolean => {
+  console.log();
+  console.log('Creating files:');
+  getFiles(templateFolderPath, (filePath: string) =>
+    copyAndConcreteFile({
+      filePath,
+      templateFolderPath,
+      projectPath,
+      concreteName,
+    }),
+  );
+  return true;
 };

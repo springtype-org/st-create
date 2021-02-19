@@ -1,1 +1,0 @@
-export const PATH_HOME_PAGE = 'home';

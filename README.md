@@ -1,30 +1,14 @@
-## `st-create`: The missing TypeScript project scaffolder
+<h1 align="center">st-create</h1>
 
-> Generates whole TypeScript projects, but also specific components based on simple templates.
+<p align="center">
+The missing TypeScript project scaffolder
+</p>
 
-`st-create` tries to help you to don't repeat yourself so much and sets up all kinds of projects in no time.
+> Generates whole TypeScript projects with a single line of code
 
-<img src="bringiton.png" width="250">
+<h2 align="center">Try it</h2>
 
-Many projects and components share the same basic code structure. e.g. single page website, multi-page websites, landing pages, Ionic PWA' or components.
-
-In the context of the framework they're based on,  (SpringType, Bootstrap, React etc.) they get  generated on basis of templates to save time.
-
-<h2 align="center">Setup</h2>
-
-
-    yarn global add st-create
-
-
-<h2 align="center">How to use?</h2>
-
-Just run:
-
-    st-create
-
-`st-create` will generate it's result relative to the current folder.
-
-<img src="howto.png" height="300" />
+    npx st-create
 
 The following command prints all options:
 
@@ -36,21 +20,17 @@ The following command prints all options:
 
 Instead of the interactive CLI questionair, you can also name all agruments and directly generate results:
 
-    st-create -c project -t babylon-3d -d MyNewWebGLGame
+    st-create -t parcel -d HelloWorld
 
 <h2 align="center">Custom templates</h2>
 
-You can just name a template folder to create a new project/component from:
+You can just name a template folder to create a new project:
 
-    st-create -c project -t ../templates/my-blog-template -d AronsBlog
+    st-create -t ../templates/my-blog-template -d AronsBlog
 
+OR
 
-<h2 align="center">Short-term Roadmap</h2>
-
-We're keen to improve this implementation until we feel really comfortable with it. Right now this lacks:
-
-- [ ] Project template for st-materialize
-- [ ] The ability to directly fetch templates from GitHub repository URL's
+    st-create -t https://github.com/springtype-org/st-template-parcel -d ParcelBasedProject
 
 <h2 align="center">Maintainers</h2>
 
