@@ -1,10 +1,10 @@
 <h1 align="center">st-create</h1>
 
 <p align="center">
-The missing TypeScript project scaffolder
+The nano project scaffolder
 </p>
 
-> Generates whole TypeScript projects with a single line of code
+> Generates projects in just 1 line of code
 
 <h2 align="center">Try it</h2>
 
@@ -14,23 +14,29 @@ The following command prints all options:
 
     st-create -h
 
-<img src="usage.png" height="250" />
-
-<h2 align="center">Automation</h2>
-
-Instead of the interactive CLI questionair, you can also name all agruments and directly generate results:
-
-    st-create -t parcel -d HelloWorld
+<img src="howto.png" height="250" />
 
 <h2 align="center">Custom templates</h2>
 
-You can just name a template folder to create a new project:
+You can create a new project from a template folder (e.g. created by yourself):
 
-    st-create -t ../templates/my-blog-template -d AronsBlog
+    st-create -t ../templates/my-blog-template -n AronsNewBlog
 
-OR
+Or even clone an arbitrary Git project:
 
-    st-create -t https://github.com/springtype-org/st-template-parcel -d ParcelBasedProject
+    st-create -t https://github.com/springtype-org/st-template-parcel -n MyNewParcelBasedProject
+
+<h2 align="center">Template language</h2>
+
+The following substritutions will happen for templates:
+
+- `templateName` 
+- `template-name`
+- `TemplateName`
+
+...will be transformed in the projects name (e.g. MyNewParcelBasedProject) keeping the original casing.
+
+This works for both *file names* and occurances in *file contents* inside of the template folder/git repository.
 
 <h2 align="center">Maintainers</h2>
 

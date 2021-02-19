@@ -16,8 +16,8 @@ printHeader();
 
 const program = createCommand(packageJson.name)
   .version(packageJson.version)
-  .option('-t, --template <template>', 'default | guide | ... | ./my/templates/foo')
-  .option('-d, --descriptor <descriptor>', 'my-component')
+  .option('-t, --template <template>', '../some/template/folder | https://github.com/whatever')
+  .option('-n, --name <name>', 'MyNewProject')
   .option('--info', 'print environment debug info')
   .allowUnknownOption()
   .on('--help', () => {
